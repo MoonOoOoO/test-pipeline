@@ -6,9 +6,5 @@ stages:
       buildContext: .
       tag: test-pipeline/app
       registry: index.docker.io
-- name: publish
-  steps:
-  - applyYamlConfig:
-      path: ./deployment.yaml
 timeout: 60
 notification: {}
