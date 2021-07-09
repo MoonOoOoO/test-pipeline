@@ -6,6 +6,6 @@ stages:
       shellScript: |-
         cd /
         ls /etc/nginx
-        cat nginx.config
+        cat nginx.conf
 timeout: 60
 notification: {}
