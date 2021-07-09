@@ -2,14 +2,10 @@ stages:
 - name: script
   steps:
   - runScriptConfig:
-      image: java:8
-      shellScript: ls
-- name: compile
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./.Dockerfile
-      buildContext: .
-      tag: test-pipeline/app
-      registry: index.docker.io
+      image: nginx
+      shellScript: |-
+        cd /
+        ls /etc/nginx
+        cat nginx.config
 timeout: 60
 notification: {}
