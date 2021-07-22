@@ -8,5 +8,12 @@ stages:
         ls /etc/nginx
         cd /etc/nginx
         cat nginx.conf
+- name: Build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./.Dockerfile
+      buildContext: .
+      tag: test:v1
+      registry: index.docker.io
 timeout: 60
 notification: {}
