@@ -31,6 +31,6 @@ spec:
         - name: pipeline-docker-registry
       containers:
         - name: ngtest
-          image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+          image: test:v1
           ports:
             - containerPort: 80
