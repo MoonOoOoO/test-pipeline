@@ -1,24 +1,23 @@
 stages:
-- name: script
-  steps:
-  - runScriptConfig:
-      image: nginx
-      shellScript: |-
-        cd /usr/share/nginx/html
-        ls
-        cat index.html
-- name: Build
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./.Dockerfile
-      buildContext: .
-      tag: test:v1
-      registry: index.docker.io
-- name: deployment
-  steps:
-  - applyYamlConfig:
-      path: ./deployment.yml
-    envFrom:
-    - sourceKey: API_TOKEN
+  - name: script
+    steps:
+      - runScriptConfig:
+          image: nginx
+          shellScript: |-
+            cd /usr/share/nginx/html
+            ls
+            cat index.html
+  - name: Build
+    steps:
+      - publishImageConfig:
+          dockerfilePath: ./.Dockerfile
+          buildContext: .
+          tag: test:v1
+        env:
+          PLUGIN_INSECURE: "true"
+  - name: deployment
+    steps:
+      - applyYamlConfig:
+          path: ./deployment.yml
 timeout: 60
 notification: {}
