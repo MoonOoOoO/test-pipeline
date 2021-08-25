@@ -4,10 +4,9 @@ stages:
   - runScriptConfig:
       image: nginx
       shellScript: |-
-        cd /
-        ls /etc/nginx
-        cd /etc/nginx
-        cat nginx.conf
+        cd /usr/share/nginx/html
+        ls
+        cat index.html
 - name: Build
   steps:
   - publishImageConfig:
